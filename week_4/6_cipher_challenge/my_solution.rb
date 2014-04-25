@@ -1,24 +1,24 @@
 # U2.W4: Cipher Challenge
 
 
-# I worked on this challenge with: .
+# I worked on this challenge with: Kenneth Mendonca.
 
 
 
 # 1. Solution
-# Write your comments on what each thing is doing. 
+# Write your comments on what each thing is doing.
 # If you have difficulty, go into IRB and play with the methods.
 
 
 
 def north_korean_cipher(coded_message)
-  input = coded_message.downcase.split("") # Check out this method in IRB to see how it works! Also refer to the ruby docs.
+  input = coded_message.downcase.split(//) # This turns every letter into an array element.
   decoded_sentence = []
   cipher = {"e" => "a",   # This is technically a shift of four letters...Can you think of a way to automate this? Is a hash
             "f" => "b",   # the best data structure for this problem? What are the pros and cons of hashes?
-            "g" => "c", 
-            "h" => "d", 
-            "i" => "e", 
+            "g" => "c",
+            "h" => "d",
+            "i" => "e",
             "j" => "f",
             "k" => "g",
             "l" => "h",
@@ -40,35 +40,30 @@ def north_korean_cipher(coded_message)
             "b" => "x",
             "c" => "y",
             "d" => "z"}
-            
-  input.each do |x| # What is #each doing here?
+
+  input.each do |x| # This is iterating over the array of each letter in the 'input' array
     found_match = false  # Why would this be assigned to false from the outset? What happens when it's true?
-    cipher.each_key do |y| # What is #each_key doing here?
-      if x == y  # What is this comparing? Where is it getting x? Where is it getting y? What are those variables really?
-        puts "I am comparing x and y. X is #{x} and Y is #{y}."
+    cipher.each_key do |y| # iterates over each key and not value.
+      if x == y  # This is implementing the cipher. So all the values in x are changed to y
         decoded_sentence << cipher[y]
         found_match = true
-        break  # Why is it breaking here?
-      elsif x == "@" || x == "#" || x == "$" || x == "%"|| x == "^" || x == "&"|| x =="*" #What the heck is this doing?
+        break  # Break ends the loop for each iteration
+      elsif x == "@" || x == "#" || x == "$" || x == "%"|| x == "^" || x == "&"|| x =="*"#It puts a space wherever there is one of these symbols
         decoded_sentence << " "
         found_match = true
         break
-      elsif (0..9).to_a.include?(x) # Try this out in IRB. What does   " (0..9).to_a "    do?
-        decoded_sentence << x
-        found_match = true
-        break
-      end 
+      end
     end
-    if not found_match  # What is this looking for?
+    if found_match == false  # The leaves things not in the cipher alone
       decoded_sentence << x
     end
   end
   decoded_sentence = decoded_sentence.join("")
- 
-  if decoded_sentence.match(/\d+/) #What is this matching? Look at Rubular for help. 
-    decoded_sentence.gsub!(/\d+/) { |num| num.to_i / 100 } #He's been known to exaggerate...
-  end  
-  return decoded_sentence # What is this returning?        
+
+  if decoded_sentence.match(/\d+/) # Finds numbers
+    decoded_sentence.gsub!(/\d+/) { |num| num.to_i / 100 } # Take all the numbers and divide them by 100
+  end
+  return decoded_sentence # This returns the decoded sentence
 end
 
 # Your Refactored Solution
@@ -87,4 +82,3 @@ p north_korean_cipher("ribx^wxst:$wsyxl%osvie,$xlir$neter,#xlir%xli%asvph!")
 p north_korean_cipher("ger^wsqifshc*nywx^kix^qi&10000*fekw@sj$gssp%vergl@hsvmxsw?")
 
 # Reflection
- 

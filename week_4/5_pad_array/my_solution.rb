@@ -1,8 +1,8 @@
 # U2.W4: Pad an Array
 
-# Complete each step below according to the challenge directions and 
+# Complete each step below according to the challenge directions and
 # include it in this file. Also make sure everything that isn't code
-# is commented in the file.  
+# is commented in the file.
 
 # I worked on this challenge [by myself, with: ].
 
@@ -15,11 +15,30 @@
 
 # 2. Initial Solution
 
+class Array
+  def pad!(l, output = nil)
+    amount = l - self.length
+    for num in 1..amount
+      self.push(output)
+    end
+    return self
+  end
+end
 
+class Array
+  def pad(l, output = nil)
+    paddedArray = self.dup
+    amount = l - paddedArray.length
+    for num in 1..amount
+      paddedArray.push(output)
+    end
+    return paddedArray
+  end
+end
 
 
 # 3. Refactored Solution
 
 
 
-# 4. Reflection 
+# 4. Reflection
