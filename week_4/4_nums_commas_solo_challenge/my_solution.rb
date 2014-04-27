@@ -26,8 +26,8 @@ def separate_comma(integer)
 end
 
 # 3. Refactored Solution
-# I'm very happy with my solution. I had to change course to say what I wanted to.
-# Comments here for my reasoning.
+# I'm happy with my solution. I had to change course to say what I wanted to.
+# My refactoring ended up happening as I worked.
 
 def separate_comma(integer)
   number = integer.to_s
