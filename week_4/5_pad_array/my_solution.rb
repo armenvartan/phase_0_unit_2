@@ -38,7 +38,13 @@ end
 
 
 # 3. Refactored Solution
-
+# We refactored as we went. I can't find anything after the fact to refactor.
 
 
 # 4. Reflection
+
+# This one was very challenging for me. I had never modified a class before. I was
+# pissed off the whole time and couldn't stop thinking about what the solution could
+# be. I really like feeling that way. I like the feeling of being outside of my
+# comfort zone and trying to figure it out (I had a much less successful experience
+# trying to figure out how to assemble my friend's tent late last night).
