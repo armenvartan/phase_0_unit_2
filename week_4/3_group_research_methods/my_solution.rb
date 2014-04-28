@@ -6,11 +6,24 @@ my_family_pets_ages = {"Evi" => 6, "Hoobie" => 3, "George" => 12, "Bogart" => 4,
 
 # Person 1's solution
 def my_array_finding_method(source, thing_to_find)
-  # Your code here!
+  wanted_items = [] #empty array for found items
+  new_source = source.map {|item| item.to_s} #convert array elements to strings
+  new_source.each do |item| #iterate through array and find items which include thing_to_find
+    if (item.include?(thing_to_find) ==  true)
+      wanted_items << item #if found, push to array
+    end
+  end
+  return wanted_items
 end
 
 def my_hash_finding_method(source, thing_to_find)
-  # Your code here!
+  wanted_value = [] # empty array for found values
+  source.each do |key, value| #iterate through key,value of hash
+    if (value == thing_to_find)
+      wanted_value << key #push if found
+    end
+  end
+  return wanted_value
 end
 
 # Identify and describe the ruby method you implemented.
@@ -19,10 +32,6 @@ end
 #
 
 # Person 2
-# def my_array_modification_method(source, amount)
-#   source1 = source.map{|x| return x + amount if x.is_a? Integer}
-#   return source1
-# end
 
 def my_array_modification_method(source, thing_to_modify)
   source.map! do |i|

@@ -32,14 +32,6 @@ def essay_writer(name, date, topic, thesis_statement, sex)
     subjectPronoun = "it"
     objectPronoun = "it"
   end
-  # objectPronoun = nil
-  # if pronoun == "male"
-  #   objectPronoun = "him"
-  # elsif pronoun == "female"
-  #   objectPronoun = "her"
-  # else
-  #   objectPronoun = "it"
-  # end
   print "#{topic}\n\n"
   print %Q(#{name} was a rad dude in #{date}. #{subjectPronoun} could hang ten with the biggest kahuna.
   I want to learn more about #{objectPronoun}. #{thesis_statement}. Then one day, #{subjectPronoun} caught the
