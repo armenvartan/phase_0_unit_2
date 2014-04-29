@@ -17,12 +17,12 @@ class VirusPredictor
     @next_region = regional_spread
   end
 
-  def virus_effects  #HINT: What is the SCOPE of instance variables?
+  def virus_effects  #HINT: What is the SCOPE of instance variables? ==> within the whole class
     predicted_deaths(@population_density, @population, @state)
     speed_of_spread(@population_density, @state)
   end
 
-  private  #what is this?  what happens if it were cut and pasted above the virus_effects method
+  private  #Private makes things below it not able to be seen (useful for storing private information like bank accts, etc...)
 
   def predicted_deaths(population_density, population, state)
     if @population_density >= 200
