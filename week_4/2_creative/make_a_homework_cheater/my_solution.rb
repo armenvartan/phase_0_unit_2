@@ -32,10 +32,10 @@ def essay_writer(name, date, topic, thesis_statement, sex)
     subjectPronoun = "it"
     objectPronoun = "it"
   end
-  print "#{topic}\n\n"
-  print %Q(#{name} was a rad dude in #{date}. #{subjectPronoun} could hang ten with the biggest kahuna.
+  template = %Q(#{topic}\n\n #{name} was a rad dude in #{date}. #{subjectPronoun} could hang ten with the biggest kahuna.
   I want to learn more about #{objectPronoun}. #{thesis_statement}. Then one day, #{subjectPronoun} caught the
   metaphorical big wave.  Now #{subjectPronoun}'s riding the big kahuna upstairs.)
+  print template
 end
 essay_writer("John", 1890, "Topic", "thesis", "male")
 
@@ -49,6 +49,8 @@ essay_writer("John", 1890, "Topic", "thesis", "male")
 
 
 # 1. DRIVER TESTS GO BELOW THIS LINE
+p essay_writer("John", 1864, "Jimmy's Paper", "Never write a check that your tush can't cash", "male") == "Jimmy was a rad dude in 1864. He could hang ten with the biggest kahuna. I want to learn more about him.
+Never write a check that your tush can't cash. Then one day, he caught the metaphorical big wave. Now he's riding the big kahuna upstairs."
 
 
 

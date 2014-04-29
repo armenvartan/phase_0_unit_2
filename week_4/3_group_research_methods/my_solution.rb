@@ -44,9 +44,6 @@ def my_array_modification_method(source, thing_to_modify)
   return source
 end
 
-# print my_array_modification_method(i_want_pets, 2)
-# print i_want_pets
-
 def my_hash_modification_method(source, thing_to_modify)
   source.each{ |k,v| source[k] = v + thing_to_modify }
 end
@@ -60,11 +57,11 @@ end
 #
 # # Person 3
 def my_array_sorting_method(source)
-  # Your code here!
+  source.sort_by { |a| a.to_s }
 end
 
 def my_hash_sorting_method(source)
-  # Your code here!
+  source.sort_by { |name, age| age }
 end
 
 # Identify and describe the ruby method you implemented.

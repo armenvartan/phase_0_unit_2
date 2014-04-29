@@ -41,3 +41,9 @@ def separate_comma(integer)
 end # BAM
 
 # 4. Reflection
+
+# This one was interesting. There are a lot of ways to approach the number to add the 
+# commas. It was fun reading through Ruby-docs and deciding which way to go. I decided
+# to count from the right of the number, just so that I could do a little less math
+# to solve the problem (since we know the number of digits from number.length, one could
+# approach the number from the left as well and add the commas that way).
