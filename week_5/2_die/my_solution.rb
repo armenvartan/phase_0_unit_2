@@ -14,16 +14,23 @@
 
 class Die
   def initialize(labels)
+    unless labels.length > 0
+      raise ArgumentError.new("No sides were defined")
+    end
+    @labels = labels
+    roll
   end
 
   def sides
+    @labels.length
   end
 
   def roll
+    @labels.sample
   end
 end
 
-
+# print die.roll
 
 # 4. Refactored Solution
 
@@ -33,10 +40,17 @@ end
 
 
 # 1. DRIVER TESTS GO BELOW THIS LINE
+die = Die.new(["a","b","c"])
+p die.sides == 3
+p die.roll == "a" || "b" || "c"
+empty = Die.new()
 
 
 
 
 
+# 5. Reflection
 
-# 5. Reflection 
+# I learned about #sample in this one. I like reading through Ruby docs. I learn
+# a lot about Ruby every time. A lot of times I find things I wasn't looking for 
+# that help later.

@@ -20,10 +20,7 @@
 
 def total(array)
   sum = 0
-  array.each do |x|
-    sum += x
-  end
-  return sum
+  array.each{ |x| sum += x }
 end
 
 def sentence_maker(array)
@@ -35,11 +32,8 @@ end
 # I have nothing to refactor this time around. My gameplan worked pretty well.
 
 def total(array)
-  sum = 0 # declaring variable
-  array.each do |x| # adding each element in the array to 'sum'
-    sum += x
-  end
-  return sum # returning the total, BAM
+  sum = 0
+  array.each{ |x| sum += x }
 end
 
 def sentence_maker(array)

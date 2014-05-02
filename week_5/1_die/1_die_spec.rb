@@ -1,6 +1,6 @@
 require_relative 'my_solution'
 
-describe Die do
+describe 'Die' do
   describe '#initialize' do
     it 'expects a single argument' do
       Die.instance_method(:initialize).arity.should eq 1
