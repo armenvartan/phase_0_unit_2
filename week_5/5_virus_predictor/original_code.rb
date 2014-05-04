@@ -18,13 +18,13 @@ class VirusPredictor
   end
 
   def virus_effects  #HINT: What is the SCOPE of instance variables? ==> within the whole class
-    predicted_deaths(@population_density, @population, @state)
-    speed_of_spread(@population_density, @state)
+    predicted_deaths
+    speed_of_spread
   end
 
-  private  #Private makes things below it not able to be seen (useful for storing private information like bank accts, etc...)
+  private  # private makes things below it unable to be called outside the class
 
-  def predicted_deaths(population_density, population, state)
+  def predicted_deaths
     if @population_density >= 200
       number_of_deaths = (@population * 0.4).floor
     elsif @population_density >= 150
@@ -41,7 +41,7 @@ class VirusPredictor
 
   end
 
-  def speed_of_spread(population_density, state) #in months
+  def speed_of_spread #in months
     speed = 0.0
 
     if @population_density >= 200
@@ -66,8 +66,7 @@ end
 
 # DRIVER CODE
  # initialize VirusPredictor for each state
-states = STATE_DATA.each_key{|state| VirusPredictor.new(state, STATE_DATA[state][:population_density], STATE_DATA[state][:population], STATE_DATA[state][:region], STATE_DATA[state][:regional_spread])}
-p states.virus_effects
+
 # alabama = VirusPredictor.new("Alabama", STATE_DATA["Alabama"][:population_density], STATE_DATA["Alabama"][:population], STATE_DATA["Alabama"][:region], STATE_DATA["Alabama"][:regional_spread])
 # alabama.virus_effects
 #
@@ -79,3 +78,8 @@ p states.virus_effects
 #
 # alaska = VirusPredictor.new("Alaska", STATE_DATA["Alaska"][:population_density], STATE_DATA["Alaska"][:population], STATE_DATA["Alaska"][:region], STATE_DATA["Alaska"][:regional_spread])
 # alaska.virus_effects
+
+STATE_DATA.each do |k,v|
+  current_state = VirusPredictor.new(k, STATE_DATA[k][:population_density], STATE_DATA[k][:population], STATE_DATA[k][:region], STATE_DATA[k][:regional_spread])
+  current_state.virus_effects
+end
