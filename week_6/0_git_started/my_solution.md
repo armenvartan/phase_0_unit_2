@@ -43,8 +43,18 @@ shows the status of your git repo i.e all files that have no been added or commi
 
 ## Release 4: Git Workflow
 
-- Push files to a remote repository
-- Fetch changes
-- Commit locally
+I set the recommended shortcuts on www.gitimmersion.com  
+My workflow
+1. gs (my shortcut for git status)
+2. ga . (if i'm adding all files worked on, otherwise ga <filename>)
+3. gs (double check to make sure i have everything lined up to commit)
+4. gc -m "My commit message" (a shortcut for git commit)  
+when done  
+5. git push origin master
 
-## Release 5: Reflection
+## Release 5: Reflection  
+www.gitimmersion.com was a huge help for me. I started working on it a week or 2 ago,
+and just finished it today (should have finished it waaay earlier). I like learning
+through many short examples. I feel pretty comfortable using git now. I still need
+more experience moving between branches, but it seems like that happens more on group
+projects.
