@@ -3,43 +3,43 @@ Define the following commands and describe how they work/what they do.
 
 
 #### add
-<!-- Your defnition here -->
+adds the file to the index
 
 #### branch
-<!-- Your defnition here -->
+tells you what branches there are/switches to a branch
 
 #### checkout
-<!-- Your defnition here -->
+move to a branch
 
 #### clone
-<!-- Your defnition here -->
+creates a copy
 
 #### commit
-<!-- Your defnition here -->
+saves added files to the repo
 
 #### fetch
-<!-- Your defnition here -->
+gets commits from another repo
 
 #### log
-<!-- Your defnition here -->
+shows commit logs
 
 #### merge
-<!-- Your defnition here -->
+merges current branch with another branch
 
 #### pull
-<!-- Your defnition here -->
+does a combo of fetch and merge
 
 #### push
-<!-- Your defnition here -->
+pushes your changes to another repo
 
 #### reset
-<!-- Your defnition here -->
+undos uncommitted changes
 
 #### rm
-<!-- Your defnition here -->
+remove
 
 #### status
-
+shows the status of your git repo i.e all files that have no been added or committed
 
 ## Release 4: Git Workflow
 
