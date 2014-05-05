@@ -1,6 +1,6 @@
 # U2.W5: Virus Predictor
 
-# I worked on this challenge [by myself, with: ].
+# I worked on this challenge [with: Ben Brostoff].
 
 # EXPLANATION OF require_relative
 # It get's information from another Ruby file
@@ -18,43 +18,31 @@ class VirusPredictor
   end
 
   def virus_effects  #HINT: What is the SCOPE of instance variables? ==> within the whole class
-    predicted_deaths
-    speed_of_spread
+    predicted_deaths # instance variables can be accessing anywhere in the class, unlike local variables.
+    speed_of_spread # so there is no point to call instance variables to other methods in the class
   end
 
   private  # private makes things below it unable to be called outside the class
-
+# if you don't want people to use methods outside of the class, you call it private. It would not make sense to do this with virus_effects, since we use it
   def predicted_deaths
-    if @population_density >= 200
-      number_of_deaths = (@population * 0.4).floor
-    elsif @population_density >= 150
-      number_of_deaths = (@population * 0.3).floor
-    elsif @population_density >= 100
-      number_of_deaths = (@population * 0.2).floor
-    elsif @population_density >= 50
-      number_of_deaths = (@population * 0.1).floor
-    else
-      number_of_deaths = (@population * 0.05).floor
-    end
+    pop_multiplier = (@population_density / 50).floor # thanks Ben
+    pop_factor = 0.1
+
+    number_of_deaths = (@population * 0.4).floor if @population_density >= 200
+
+    number_of_deaths = (@population * 0.05).floor if @population_density < 50
+
+    else number_of_deaths = (@population * (pop_multiplier * pop_factor)).floor
 
     print "#{@state} will lose #{number_of_deaths} people in this outbreak"
 
   end
 
   def speed_of_spread #in months
-    speed = 0.0
+    speed = 0.5 # for all cases >= 200
 
-    if @population_density >= 200
-      speed += 0.5
-    elsif @population_density >= 150
-      speed += 1
-    elsif @population_density >= 100
-      speed += 1.5
-    elsif @population_density >= 50
-      speed += 2
-    else
-      speed += 2.5
-    end
+    speed = 2.5 - ((@population_density / 50).floor * 0.5) if @population_density < 200
+
 
     print " and will spread across the state in #{speed} months.\n\n"
 
@@ -65,21 +53,8 @@ end
 #=======================================================================
 
 # DRIVER CODE
- # initialize VirusPredictor for each state
 
-# alabama = VirusPredictor.new("Alabama", STATE_DATA["Alabama"][:population_density], STATE_DATA["Alabama"][:population], STATE_DATA["Alabama"][:region], STATE_DATA["Alabama"][:regional_spread])
-# alabama.virus_effects
-#
-# jersey = VirusPredictor.new("New Jersey", STATE_DATA["New Jersey"][:population_density], STATE_DATA["New Jersey"][:population], STATE_DATA["New Jersey"][:region], STATE_DATA["New Jersey"][:regional_spread])
-# jersey.virus_effects
-#
-# california = VirusPredictor.new("California", STATE_DATA["California"][:population_density], STATE_DATA["California"][:population], STATE_DATA["California"][:region], STATE_DATA["California"][:regional_spread])
-# california.virus_effects
-#
-# alaska = VirusPredictor.new("Alaska", STATE_DATA["Alaska"][:population_density], STATE_DATA["Alaska"][:population], STATE_DATA["Alaska"][:region], STATE_DATA["Alaska"][:regional_spread])
-# alaska.virus_effects
-
-STATE_DATA.each do |k,v|
-  current_state = VirusPredictor.new(k, STATE_DATA[k][:population_density], STATE_DATA[k][:population], STATE_DATA[k][:region], STATE_DATA[k][:regional_spread])
+STATE_DATA.each_key do |state|
+  current_state = VirusPredictor.new(state, STATE_DATA[state][:population_density], STATE_DATA[state][:population], STATE_DATA[state][:region], STATE_DATA[state][:regional_spread])
   current_state.virus_effects
 end
