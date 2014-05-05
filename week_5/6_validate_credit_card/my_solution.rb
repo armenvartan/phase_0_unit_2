@@ -14,6 +14,7 @@
 
 # Don't forget to check on intialization for a card length
 # of exactly 16 digits
+
 class CreditCard
   def initialize(card_number)
     raise ArgumentError.new("Must be an Integer") unless card_number.is_a? Integer # Checking that it's an integer
@@ -46,13 +47,10 @@ class CreditCard
   end
   def check_card
     cc_num = @card_number.to_s.split(//).map{ |num| num.to_i } # turning the CC number into an array, so we can play with it
-    i = 0 # for the while loop to add the proper elements in the array
-    while i < @card_number.to_s.length do # for elements 0,2,...,14 in the array
-      cc_num[i] += cc_num[i] # you could do cc_num * 2 here... same thing
-      i += 2
-    end
-    luhn = cc_num.join.split(//).map{ |num| num.to_i } # Turning it back into a string first, so that we can split the multi-digit numbers
-    sum = luhn.reduce(:+) # Adds all the elements of an array together
+    doubled_evens = []
+    cc_num.each_index{ |i| i % 2 == 0 ? doubled_evens << cc_num[i] * 2 : doubled_evens << cc_num[i] } # doubled every even index in the array (including 0)
+    luhn_number = doubled_evens.join.split(//).map{ |num| num.to_i } # Turning it back into a string first, so that we can split the multi-digit numbers
+    sum = luhn_number.reduce(:+) # Adds all the elements of an array together
     sum % 10 == 0 ? true : false
   end
 end
