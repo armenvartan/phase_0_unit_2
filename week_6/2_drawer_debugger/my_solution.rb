@@ -30,11 +30,18 @@ class Drawer
   end
 
   def remove_item(*item) #what is `#pop` doing?
-    puts "You didn't give an item to remove" if item == nil
-    @contents.delete(item)
+    if item.length == 1
+      silverware = []
+      silverware.push(item)
+      @contents.delete(item)
+      Silverware.new(silverware.to_s)
+    else
+      puts "please only 1 piece of silverware at a time. No more, no less."
+    end
   end
 
   def dump  # what should this method return?
+    @contents = []
     puts "Your drawer is empty."
   end
 
@@ -55,7 +62,7 @@ class Silverware
   end
 
   def eat
-    puts "eating with the #{type}"
+    puts "eating with the #{@type}"
     @clean = false
   end
 
@@ -95,7 +102,7 @@ fork = silverware_drawer.remove_item(fork) #add some puts statements to help you
 fork.eat
 
 #BONUS SECTION
-# puts fork.clean
+puts fork.clean
 
 # DRIVER TESTS GO BELOW THIS LINE
 
