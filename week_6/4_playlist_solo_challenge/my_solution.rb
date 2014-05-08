@@ -21,32 +21,52 @@
 
 # Initial Solution
 class Song
+  attr_reader :song
+  attr_reader :band
 
   def initialize(song, band)
-    @@band = band
-    @@song = song
+    @band = band
+    @song = song
   end
 
   def play
-    puts "Playing '#{@@song}' by '#{@@band}'"
+    puts "Playing '#{@song}' by '#{@band}'"
   end
 
 end
 
-class Playlist < Song
+class Playlist
+  attr_reader :song
+  attr_reader :band
 
   def initialize(*songs)
     @songs = [*songs]
+    p @songs
   end
 
-  def add(*songs)
-    @songs << [*songs]
-    # p @songs
+  def add(*tracks)
+    tracks.each { |track| @songs << track }
+  end
+
+  def remove(*tracks)
+    tracks.each { |track| @songs.delete(track) }
   end
 
   def num_of_tracks
     @songs.length
-    p @songs.length
+  end
+
+  def includes?(track)
+    @songs.include?(track)
+  end
+
+  def play_all
+    @songs.each { |track| puts "Playing #{track.song}" }
+  end
+
+  def display
+    puts "Your playlist is:"
+    @songs.each { |track| puts "#{track.song}, by #{track.band}"}
   end
 end
 
@@ -70,6 +90,8 @@ lying_from_you = Song.new("Lying From You", "Linkin Park")
 angels = Song.new("Angels", "Within Temptation")
 
 my_playlist.add(lying_from_you, angels)
+p my_playlist.song
+p my_playlist.num_of_tracks
 p my_playlist.num_of_tracks == 5
 going_under.play
 my_playlist.remove(angels)
@@ -82,3 +104,6 @@ my_playlist.display
 
 
 # Reflection
+
+# This was really frustrating. I still don't get attribute accessors. Good news is that
+# it's only Thursday, so I have some time to figure it out.
