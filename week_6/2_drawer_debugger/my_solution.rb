@@ -1,7 +1,8 @@
 # U2.W6: Drawer Debugger
 
 
-# I worked on this challenge [by myself, with: ].
+# I worked on this challenge [with: Ben Brostoff helped me (we didn't really work
+# together, he just helped me. Thanks, Ben)].
 
 
 # 2. Original Code
@@ -29,18 +30,11 @@ class Drawer
     @contents << item
   end
 
-  def remove_item(*item) #what is `#pop` doing?
-    if item.length == 1
-      silverware = []
-      silverware.push(item)
+  def remove_item(item = @contents.pop) # #pop removes the last element in the array, if you don't pass a value
       @contents.delete(item)
-      Silverware.new(silverware.to_s)
-    else
-      puts "please only 1 piece of silverware at a time. No more, no less."
-    end
   end
 
-  def dump  # what should this method return?
+  def dump  # empties the drawer
     @contents = []
     puts "Your drawer is empty."
   end
@@ -62,8 +56,9 @@ class Silverware
   end
 
   def eat
-    puts "eating with the #{@type}"
-    @clean = false
+
+      puts "eating with the #{@type}"
+      @clean = false
   end
 
   def clean_silverware
@@ -71,6 +66,7 @@ class Silverware
   end
 
 end
+
 
 knife1 = Silverware.new("knife")
 
@@ -83,7 +79,7 @@ silverware_drawer.view_contents
 silverware_drawer.remove_item
 silverware_drawer.view_contents
 sharp_knife = Silverware.new("sharp_knife")
-
+p sharp_knife.type
 
 silverware_drawer.add_item(sharp_knife)
 
@@ -98,11 +94,12 @@ silverware_drawer.dump
 silverware_drawer.view_contents #What should this return?
 
 
-fork = silverware_drawer.remove_item(fork) #add some puts statements to help you trace through the code...
+fork = Silverware.new("fork")
+silverware_drawer.remove_item(fork) #add some puts statements to help you trace through the code...
 fork.eat
 
 #BONUS SECTION
-puts fork.clean
+fork.clean_silverware
 
 # DRIVER TESTS GO BELOW THIS LINE
 
@@ -112,3 +109,10 @@ puts fork.clean
 
 
 # 5. Reflection
+
+# I didn't really get this assignment. I learned about attribute accessors (I finally
+# took the time to start going through Why's Poignant Guide to Ruby--his explanation
+# of attribute accessors is really good) and multiple args using *. That being said,
+# I don't think I did this properly. I looked through other people's solutions, but
+# I still don't feel any more confident in my solution. It seems like the test code
+# was broken, but maybe I just cheated by fixing it--I'm not really sure.

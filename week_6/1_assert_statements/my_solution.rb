@@ -28,25 +28,21 @@ class CreditCard
   end
   def check_card
     cc_num = @card_number.to_s.split(//).map{ |num| num.to_i } # turning the CC number into an array, so we can play with it
-    doubled_evens = []
-    cc_num.each_index{ |i| i % 2 == 0 ? doubled_evens << cc_num[i] * 2 : doubled_evens << cc_num[i] } # doubled every even index in the array (including 0)
-    luhn_number = doubled_evens.join.split(//).map{ |num| num.to_i } # Turning it back into a string first, so that we can split the multi-digit numbers
-    sum = luhn_number.reduce(:+) # Adds all the elements of an array together
-    sum % 10 == 0 ? true : false
+    cc_num.each_with_index{ |obj, i| cc_num[i] = (obj * 2) if i.even? }
+    cc_num.join.split(//).map{ |i| i.to_i }.reduce(:+) % 10 == 0
   end
 end
 
 
 # 4. Convert your driver test code from that challenge into Assert Statements
 
-card1 = CreditCard.new(1234567890123456)
-card2 = CreditCard.new(4408041234567893)
-assert { card1.check_card == false }
-assert { card2.check_card == true }
+assert { CreditCard.new(1111111111111111).check_card == false }
+assert { CreditCard.new(4408041234567893).check_card == true }
 
 
 
 # 5. Reflection
 
-# Maybe I missed something, but this one was very simple. I don't have a
-# problem with that. I'm sure it leads to good habits for future work.
+# I made more refactors on my solution based on things I saw from JuelyFish.
+# I had never seen #each_with_index before. It's a nice one. I need to look through
+# that part of Ruby Docs some more.

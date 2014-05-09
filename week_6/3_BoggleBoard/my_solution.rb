@@ -6,7 +6,9 @@
 
 # 2. Pseudocode
 
-
+# 1. Put my methods inside a class.
+# 2. add #join to turn them from an array to a string
+# 3. Profit
 
 # 3. Initial Solution
 class BoggleBoard
@@ -16,7 +18,7 @@ def initialize(board)
 end
 
 def create_word(*coords)
-  coords.map { |coord| @board[coord.first][coord.last]}.join("")
+  coords.map { |coord| @board[coord.first][coord.last]}.join
 end
 
 def get_row(row)
@@ -69,3 +71,6 @@ end
 # "etre"
 
 # 5. Reflection
+
+# This one was pretty easy (unless I missed something). I don't know if it helped my
+# understanding of classes, but it was a nice start to the week.

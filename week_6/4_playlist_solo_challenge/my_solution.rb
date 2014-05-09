@@ -21,8 +21,7 @@
 
 # Initial Solution
 class Song
-  attr_reader :song
-  attr_reader :band
+  attr_reader :song, :band
 
   def initialize(song, band)
     @band = band
@@ -36,12 +35,10 @@ class Song
 end
 
 class Playlist
-  attr_reader :song
-  attr_reader :band
+  attr_reader :song, :band
 
   def initialize(*songs)
     @songs = [*songs]
-    p @songs
   end
 
   def add(*tracks)
@@ -61,7 +58,12 @@ class Playlist
   end
 
   def play_all
-    @songs.each { |track| puts "Playing #{track.song}" }
+    tracks = ["Playing"]
+    @songs.each { |track| tracks << " #{track.song}," }
+    track_array = tracks.join.split(//)
+    track_array.pop
+    tracklist = track_array.join
+    puts "#{tracklist}."
   end
 
   def display
@@ -90,8 +92,6 @@ lying_from_you = Song.new("Lying From You", "Linkin Park")
 angels = Song.new("Angels", "Within Temptation")
 
 my_playlist.add(lying_from_you, angels)
-p my_playlist.song
-p my_playlist.num_of_tracks
 p my_playlist.num_of_tracks == 5
 going_under.play
 my_playlist.remove(angels)
