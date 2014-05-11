@@ -20,6 +20,62 @@
 # #display shows the whole playlist
 
 # Initial Solution
+# class Song
+#   attr_reader :song, :band
+#
+#   def initialize(song, band)
+#     @band = band
+#     @song = song
+#   end
+#
+#   def play
+#     puts "Playing '#{@song}' by '#{@band}'"
+#   end
+#
+# end
+#
+# class Playlist
+#   attr_reader :song, :band
+#
+#   def initialize(*songs)
+#     @songs = [*songs]
+#   end
+#
+#   def add(*tracks)
+#     tracks.each { |track| @songs << track }
+#   end
+#
+#   def remove(*tracks)
+#     tracks.each { |track| @songs.delete(track) }
+#   end
+#
+#   def num_of_tracks
+#     @songs.length
+#   end
+#
+#   def includes?(track)
+#     @songs.include?(track)
+#   end
+#
+#   def play_all
+#     tracks = ["Playing"]
+#     @songs.each { |track| tracks << " #{track.song}," }
+#     track_array = tracks.join.split(//)
+#     track_array.pop
+#     tracklist = track_array.join
+#     puts "#{tracklist}."
+#   end
+#
+#   def display
+#     puts "Your playlist is:"
+#     @songs.each { |track| puts "#{track.song}, by #{track.band}"}
+#   end
+# end
+
+
+
+# Refactored Solution
+
 class Song
   attr_reader :song, :band
 
@@ -58,12 +114,10 @@ class Playlist
   end
 
   def play_all
-    tracks = ["Playing"]
-    @songs.each { |track| tracks << " #{track.song}," }
-    track_array = tracks.join.split(//)
-    track_array.pop
-    tracklist = track_array.join
-    puts "#{tracklist}."
+    song_list ||= []
+    @songs.each{ |track| song_list << track.song }
+    playing = "Playing: "
+    eval( "playing + song_list.join(', ')")
   end
 
   def display
@@ -71,11 +125,6 @@ class Playlist
     @songs.each { |track| puts "#{track.song}, by #{track.band}"}
   end
 end
-
-
-
-# Refactored Solution
-
 
 
 
@@ -96,7 +145,7 @@ p my_playlist.num_of_tracks == 5
 going_under.play
 my_playlist.remove(angels)
 p my_playlist.includes?(lying_from_you) == true
-my_playlist.play_all
+p my_playlist.play_all
 my_playlist.display
 
 
